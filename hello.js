@@ -2,6 +2,7 @@
 var request = require('request');
 
 // Handles the messaging to connect with Twilio.
+// Need Docs.
 
 return function (context, callback) {
     var required_params = ['TWILIO_TOKEN', 'TWILIO_SID', 'TWILIO_PHONE', 'to', 'message'];
