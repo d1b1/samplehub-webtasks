@@ -7,22 +7,21 @@ app.get('/test', function(req, res) {
   var url_parts = url.parse(req.url, true);
   var query = url_parts.query;
   
-  //dddd
   var ref = new Firebase('https://samplehub-25c4d.firebaseio.com/users/' + query.id);
- 
+
   ref.on("value", function(snapshot) {
       //res.json({ d: snapshot.val()});
-       
+
       // var nameSnapshot = snapshot.child("displayName");
       // var name = nameSnapshot.val();
-  
+
       ref.update({test: 888892929298})
       // var data = snapshot.val();
       // data.passcode = '11111';
-      
+
       // var t = snapshot;
       // console.log(t.$ref());
-      
+
       //ref.set(data);
   //     ref.set(
   //       {
@@ -31,7 +30,7 @@ app.get('/test', function(req, res) {
   //   "role": "administrator",
   //   "uid": "gkWh5GrKt3gbw6o3gI4wWPuoS2Q2"
   // });
-  
+
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
   });
@@ -39,7 +38,7 @@ app.get('/test', function(req, res) {
 
 // Here we are exporting our express app using the wt helper library
 module.exports = wt.fromExpress(app).auth0({
-  // We are excluding the 'subscribe' route, 
+  // We are excluding the 'subscribe' route,
   // so that anyone can subscribe to the newsletter
   exclude : [ '/test' ],
   // Here we are implementing a custom login error function which will send
