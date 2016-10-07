@@ -2,7 +2,7 @@
 var request = require('request');
 
 // Handles the messaging to connect with Twilio.
-// Need Docs.
+// Need Docs.  
 
 return function (context, callback) {
     var required_params = ['TWILIO_TOKEN', 'TWILIO_SID', 'TWILIO_PHONE', 'to', 'message'];
@@ -10,8 +10,8 @@ return function (context, callback) {
         if (!context.data[required_params[p]])
             return callback(new Error('The `' + required_params[p] + '` parameter must be provided.'));
 
-    request({ 
-        url: 'https://api.twilio.com/2010-04-01/Accounts/' + context.data.TWILIO_SID + '/Messages', 
+    request({
+        url: 'https://api.twilio.com/2010-04-01/Accounts/' + context.data.TWILIO_SID + '/Messages',
         method: 'POST',
         auth: {
             user: context.data.TWILIO_SID,
@@ -26,4 +26,3 @@ return function (context, callback) {
         callback(error, body);
     });
 }
-
