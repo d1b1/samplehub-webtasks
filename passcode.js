@@ -51,20 +51,20 @@ app.get('/test', function(req, res) {
   });
 });
 
-module.exports = wt.fromExpress(app);
+// module.exports = wt.fromExpress(app);
 
 // Here we are exporting our express app using the wt helper library
-// module.exports = wt.fromExpress(app).auth0({
-//   // We are excluding the 'subscribe' route,
-//   // so that anyone can subscribe to the newsletter
-//   exclude : [ '/test', '/user/*/verify', 'user/*/activate' ],
-//   // Here we are implementing a custom login error function which will send
-//   // the user an appropriate message if the request is not authorized
-//   loginError: function (error, ctx, req, res, baseUrl) {
-//         res.writeHead(401, { 'Content-Type': 'application/json'})
-//         res.end(JSON.stringify(RESPONSE.UNAUTHORIZED))
-//     }
-// });
+module.exports = wt.fromExpress(app).auth0({
+  // We are excluding the 'subscribe' route,
+  // so that anyone can subscribe to the newsletter
+  exclude : [ '/test', '/user/*/verify', 'user/*/activate' ],
+  // Here we are implementing a custom login error function which will send
+  // the user an appropriate message if the request is not authorized
+  loginError: function (error, ctx, req, res, baseUrl) {
+        res.writeHead(401, { 'Content-Type': 'application/json'})
+        res.end(JSON.stringify(RESPONSE.UNAUTHORIZED))
+    }
+});
 
 // var request = require('request');
 //
