@@ -5,17 +5,17 @@ var Firebase = require('firebase');
 // This will look for a given user's UID and attempt to set a passcode,
 // and send an SMS.
 
-app.post('/user/:uid/verify'), function(req, res) {
-  res.send('Got the verify link.');
-});
+// app.post('/user/:uid/verify'), function(req, res) {
+//   res.send('Got the verify link.');
+// });
 
 // This will attempt to lookup a given user, and will check if the passcode
 // provided matches the users account. If there is a match, then the users
 // user.phoneVerified is set to true.
 
-app.put('/user/:uid/activate'), function(req, res) {
-  res.send('Got the activation link.');
-});
+// app.put('/user/:uid/activate'), function(req, res) {
+//   res.send('Got the activation link.');
+// });
 
 app.get('/test', function(req, res) {
   var url = require('url');
